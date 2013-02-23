@@ -1,0 +1,55 @@
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<!-- A JPA Persistence Unit -->
+	<persistence-unit name="jpamanager" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://localhost/test?autoReconnect=true&amp;characterEncoding=UTF-8" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="minPoolSize" value="5" />
+			<property name="initialPoolSize" value="10" />
+			<property name="maxPoolSize" value="200" />
+			<property name="idleConnectionTestPeriod" value="120" />
+			<property name="acquireIncrement" value="10" />
+			<property name="checkoutTimeout" value="3600" />
+			<property name="numHelperThreads" value="4" />
+			<property name="maxStatements" value="400" />
+			<property name="maxStatementsPerConnection" value="20" />
+			<property name="maxIdleTime" value="180" />
+			<property name="acquireRetryAttempts" value="30" />
+
+
+			<!-- hibernate的c3p0连接池配置（需要jar包：c3p0-0.9.0.4.jar） -->
+
+			<property name="hibernate.connection.provider_class"
+				value="org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider" />
+			<!-- 最小连接数 -->
+			<property name="c3p0.min_size" value="5" />
+			<!-- 最大连接数 -->
+			<property name="c3p0.max_size" value="30" />
+			<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+			<property name="c3p0.maxIdleTime" value="60" />
+			<!-- 获得连接的超时时间,如果超过这个时间,会抛出异常，单位毫秒 -->
+			<property name="c3p0.timeout" value="1800" />
+			<!-- 最大的PreparedStatement的数量 -->
+			<property name="c3p0.max_statements" value="50" />
+			<!-- 每隔120秒检查连接池里的空闲连接 ，单位是秒 -->
+			<property name="c3p0.idle_test_period" value="120" />
+			<!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 -->
+			<property name="c3p0.acquire_increment" value="1" />
+			<!-- 是否每次都验证连接是否可用 -->
+			<property name="c3p0.validate" value="false" />
+		</properties>
+	</persistence-unit>
+
+</persistence>
